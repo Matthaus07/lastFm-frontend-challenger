@@ -1,6 +1,5 @@
 import { HttpClient, HttpStatusCode } from '@/data/protocols/http'
-import { UnexpectedError } from '@/domain/'
-import { LoadArtistList } from '@/domain/'
+import { UnexpectedError , LoadArtistList } from '@/domain/'
 
 export class RemoteLoadArtistList implements LoadArtistList {
   constructor (
@@ -13,6 +12,7 @@ export class RemoteLoadArtistList implements LoadArtistList {
       url: this.url,
       method: 'get'
     })
+
     const remoteArtist = httpResponse.body || []
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok: return remoteArtist.map(remoteArtist => Object.assign(remoteArtist))
@@ -23,10 +23,10 @@ export class RemoteLoadArtistList implements LoadArtistList {
 }
 
 export namespace RemoteLoadArtistList {
-  export type Model = {
-    id:string,
-    name: string,
-    url: string,
+  export interface Model {
+    id: string
+    name: string
+    url: string
     image: Array<{}>
   }
 }

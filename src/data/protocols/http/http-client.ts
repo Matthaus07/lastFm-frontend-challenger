@@ -1,4 +1,4 @@
-export type HttpRequest = {
+export interface HttpRequest {
   url: string
   method: 'get'
   body?: any
@@ -17,7 +17,7 @@ export enum HttpStatusCode {
   serverError = 500
 }
 
-export type HttpResponse<T = any> = {
+export interface HttpResponse<T = any> {
   statusCode: HttpStatusCode
   body?: T
 }

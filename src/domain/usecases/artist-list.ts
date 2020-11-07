@@ -3,10 +3,10 @@ export interface LoadArtistList {
 }
 
 export namespace LoadArtistList {
-  export type Model ={
-    id:string,
-    name: string,
-    url: string,
+  export interface Model {
+    id: string
+    name: string
+    url: string
     image: Array<{}>
   }
 }

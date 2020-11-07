@@ -3,12 +3,12 @@ import React from 'react'
 
 const Router: React.FC = () => {
   return (
-  
-      <BrowserRouter>
-        <Switch>
-          <Route path="/login" exact component={MainLogin} />
-        </Switch>
-      </BrowserRouter>
+
+    <BrowserRouter>
+      <Switch>
+        {/* <Route path="/login" exact component={MainLogin} /> */}
+      </Switch>
+    </BrowserRouter>
   )
 }
 
