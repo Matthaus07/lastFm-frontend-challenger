@@ -7,6 +7,7 @@ export interface HttpRequest {
 
 export interface HttpClient<R = any> {
   request: (data: HttpRequest) => Promise<HttpResponse<R>>
+
 }
 
 export enum HttpStatusCode {
