@@ -1,0 +1,105 @@
+
+.contentList{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
+  justify-items: center;  
+  .contentDetail{
+     cursor:pointer;
+     transform:  translateZ(0) translate(0, 0.3em);
+     transition: 0.2s;
+     text-align: center;
+     .imgThumbnail{
+       max-width:100%; 
+      height: 100px;
+       box-shadow: 0 26px 24px -16px rgba(0,0,0,0.4);
+      }
+      
+      .textDescription{
+        margin: 1em 0 1em;
+        font-weight: bold;
+        text-align: center;
+        width: 150px;
+        small{
+          font-weight: 500;
+          font-size: 10px;
+        } 
+      }
+      
+      &:hover{
+        color:red;
+        transform:  translateZ(0) translate(0, -0.3em);
+        transition: 0.3s;
+      }
+      
+    } 
+}
+
+  
+  .customButton{
+    display: flex;
+    color: #ffff;
+    background: linear-gradient(192deg, #f30000, #ea232394);
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: 1s;
+    width: 150px;
+    justify-content: center;
+    margin-top: 3em;
+    margin-bottom: 4em;
+
+    &:hover{
+      background: linear-gradient(192deg, #f30000, #ea2323);
+      transition: 2s;
+      border: 1px solid;
+    }
+  }
+
+  .subititleType{
+    font-size:20px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    margin: 1em 0 1em;
+    
+  }
+  
+  @media (max-width: 700px) {
+    .contentList {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  
+      img:nth-child(3) {
+        grid-row: span 2
+      }
+      img:nth-child(4) {
+        grid-column: span 2;
+        grid-row: span 2
+      }
+      
+     .contentDetail{
+    
+       .imgThumbnail{
+         max-width: 80%;
+         height: 260px;
+         box-shadow: 0 26px 24px -16px rgba(0, 0, 0, 0.4);
+         max-height: 100%;
+       }
+       .textDescription{
+       
+         width: 95%;
+       }
+     }
+    }  
+  
+  }
+  @media (max-width: 420px) {
+    .contentList{
+      .contentDetail{
+        .imgThumbnail{
+          height: auto;
+        }
+    }
+   
+  }
+  }
