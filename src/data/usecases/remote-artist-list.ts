@@ -4,10 +4,10 @@ import { UnexpectedError , LoadArtistList } from '@/domain/'
 export class RemoteLoadArtistList implements LoadArtistList {
   constructor (
     private readonly url: string,
-    private readonly httpClient: HttpClient<RemoteLoadArtistList.Model[]>
+    private readonly httpClient: HttpClient<RemoteLoadArtistList.Model>
   ) {}
 
-  async allList (): Promise<LoadArtistList.Model[]> {
+  async allList (): Promise<LoadArtistList.Model> {
     const httpResponse = await this.httpClient.request({
       url: this.url,
       method: 'get'
@@ -15,8 +15,8 @@ export class RemoteLoadArtistList implements LoadArtistList {
 
     const remoteArtist = httpResponse.body || []
     switch (httpResponse.statusCode) {
-      case HttpStatusCode.ok: return remoteArtist.map(remoteArtist => Object.assign(remoteArtist))
-      case HttpStatusCode.noContent: return []
+      case HttpStatusCode.ok: return Object.assign(remoteArtist)
+      case HttpStatusCode.noContent: return null
       default: throw new UnexpectedError()
     }
   }
@@ -24,9 +24,14 @@ export class RemoteLoadArtistList implements LoadArtistList {
 
 export namespace RemoteLoadArtistList {
   export interface Model {
-    id: string
-    name: string
-    url: string
-    image: Array<{}>
+    artistmatches: {
+      artist: {
+        id?: string
+        name?: string
+        url?: string
+        image?: Array<{}>
+
+      }
+    }
   }
 }
