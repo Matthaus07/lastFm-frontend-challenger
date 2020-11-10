@@ -20,7 +20,18 @@ module.exports = {
       {
         test: /\.ts(x?)$/,
         loader: 'ts-loader',
-        exclude: /node-modules/,
+        exclude: /node-modules/
+      },
+      {
+        test: /\.(jpe?g|gif|png|svg)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
       },
       {
         test: /\.(s?)css$/,
